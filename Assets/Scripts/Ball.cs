@@ -11,7 +11,6 @@ public class Ball : MonoBehaviour
   void Start()
   {
     rigidbody = gameObject.GetComponent<Rigidbody>();
-    rigidbody.AddForce(4, 4, 0, ForceMode.VelocityChange);
     kickSound = GetComponent<AudioSource>();
   }
 
@@ -38,5 +37,10 @@ public class Ball : MonoBehaviour
       float horizontalInput = Input.GetAxis("Horizontal");
       rigidbody.AddForce(Vector3.right * paddleEffectAmmount * horizontalInput);
     }
+  }
+
+  public void Shoot()
+  {
+    rigidbody.AddForce(Input.GetAxis("Horizontal") * 4, 4, 0, ForceMode.VelocityChange);
   }
 }
