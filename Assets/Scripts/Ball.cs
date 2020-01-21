@@ -16,7 +16,7 @@ public class Ball : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-    Debug.Log("GameEnd");
+    GameObject.Find("Player").GetComponent<Player>().Loose();
     Destroy(gameObject);
   }
 
