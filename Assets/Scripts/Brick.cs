@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+  public int startingLife;
   [SerializeField] private int life = 1;
   public GameObject particlePrefab;
+  public Material[] materials;
+  private MeshRenderer meshRenderer;
+  private AudioSource audioSource;
+
+  private void Awake()
+  {
+    meshRenderer = gameObject.GetComponent<MeshRenderer>();
+    audioSource = gameObject.GetComponent<AudioSource>();
+  }
+
+  private void Start()
+  {
+    life = startingLife;
+    UpdateMaterial();
+  }
 
   public void Hit()
   {
@@ -20,5 +36,15 @@ public class Brick : MonoBehaviour
 
       Destroy(gameObject);
     }
+    else
+    {
+      audioSource.Play();
+      UpdateMaterial();
+    }
+  }
+
+  private void UpdateMaterial()
+  {
+    meshRenderer.material = materials[life - 1];
   }
 }

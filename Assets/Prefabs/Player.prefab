@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14b92591898a5194dbd17149e9ebc97c, type: 2}
+  - {fileID: 2100000, guid: 81a3531dfd8cb5945888974cf4fd349e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,7 +90,7 @@ Rigidbody:
   m_GameObject: {fileID: 7164693130050302949}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 6
+  m_Drag: 5
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45a10f6bad985546800d8e5f98bea12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1300
+  moveSpeed: 2000
   paddle: {fileID: 0}
