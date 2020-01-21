@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
   void Start()
   {
     rigidbody = gameObject.GetComponent<Rigidbody>();
-    rigidbody.AddForce(10, 10, 0, ForceMode.VelocityChange);
+    rigidbody.AddForce(4, 4, 0, ForceMode.VelocityChange);
   }
 
   void Update()
