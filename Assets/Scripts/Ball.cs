@@ -12,7 +12,9 @@ public class Ball : MonoBehaviour
     rigidbody.AddForce(4, 4, 0, ForceMode.VelocityChange);
   }
 
-  void Update()
+  private void OnTriggerEnter(Collider other)
   {
+    Debug.Log("GameEnd");
+    Destroy(gameObject);
   }
 }
