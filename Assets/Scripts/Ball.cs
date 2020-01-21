@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+  public float paddleEffectAmmount;
   private new Rigidbody rigidbody;
   private AudioSource kickSound;
 
@@ -31,7 +32,11 @@ public class Ball : MonoBehaviour
     {
       kickSound.Play();
     }
-
-
+    else if (other.gameObject.CompareTag("Paddle"))
+    {
+      kickSound.Play();
+      float horizontalInput = Input.GetAxis("Horizontal");
+      rigidbody.AddForce(Vector3.right * paddleEffectAmmount * horizontalInput);
+    }
   }
 }
