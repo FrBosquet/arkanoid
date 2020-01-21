@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 440143760}
   - component: {fileID: 440143759}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440143758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.035805374, y: -6, z: -1.1474392}
+  m_LocalPosition: {x: 0, y: -7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 2019865966}
   m_Layer: 11
   m_Name: Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,10 +533,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1602948503, guid: 6b9823fa00f4d364f82b9fccfb92508a, type: 3}
-      propertyPath: m_Constraints
-      value: 124
-      objectReference: {fileID: 0}
     - target: {fileID: 1602948508, guid: 6b9823fa00f4d364f82b9fccfb92508a, type: 3}
       propertyPath: paddle
       value: 
@@ -600,6 +596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164693130050302949, guid: 6b9823fa00f4d364f82b9fccfb92508a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9823fa00f4d364f82b9fccfb92508a, type: 3}
