@@ -17,4 +17,13 @@ public class Ball : MonoBehaviour
     Debug.Log("GameEnd");
     Destroy(gameObject);
   }
+
+  private void OnCollisionEnter(Collision other)
+  {
+    if (other.gameObject.CompareTag("Brick"))
+    {
+      Brick brick = other.gameObject.GetComponent<Brick>();
+      brick.Hit();
+    }
+  }
 }
