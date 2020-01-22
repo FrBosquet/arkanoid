@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+  public List<GameObject> levels;
   public GameObject gameOverScreen;
   public GameObject pauseScreen;
-  public List<GameObject> levels;
-  private GameObject level;
-  private bool pause = false;
-  private Player playerScript;
-  private int levelIndex = 0;
+
   [SerializeField] private int lifes;
+  private Player playerScript;
+  private LevelManager levelManager;
+  private int levelIndex = 0;
+
+  private bool pause = false;
 
   private void Awake()
   {
     playerScript = GameObject.Find("Player").GetComponent<Player>();
+    levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
   }
 
   private void Start()
@@ -36,8 +39,9 @@ public class GameManager : MonoBehaviour
     gameOverScreen.SetActive(false);
     levelIndex = 0;
     lifes = 2;
-    LoadLevel(0);
+    levelManager.ResetProgresion();
     playerScript.Restart();
+    Time.timeScale = 1;
   }
 
   public void LoseBall()
@@ -53,12 +57,6 @@ public class GameManager : MonoBehaviour
     {
       playerScript.Restart();
     }
-  }
-
-  private void LoadLevel(int index)
-  {
-    Destroy(level);
-    level = Instantiate(levels[index], Vector3.zero, Quaternion.identity);
   }
 
   public void TogglePause()

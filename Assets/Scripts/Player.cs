@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
   public GameObject ballPrefab;
   public GameObject ball;
   private bool dead;
+  private float BALL_HEIGHT = 0.3f;
 
   void Start()
   {
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
 
     if (ball != null)
     {
-      ball.transform.position = transform.position + Vector3.up * 0.3f;
+      ball.transform.position = transform.position + Vector3.up * BALL_HEIGHT;
 
       if (shoot)
       {
@@ -46,7 +47,7 @@ public class Player : MonoBehaviour
   {
     dead = false;
     transform.position = new Vector3(0, -5, 0);
-    ball = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+    ball = Instantiate(ballPrefab, transform.position + Vector3.up * BALL_HEIGHT, Quaternion.identity);
   }
 
   public void SetDead(bool isDead)
