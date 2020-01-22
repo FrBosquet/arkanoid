@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
   public GameObject pauseScreen;
   public List<GameObject> levels;
   private GameObject level;
+  private bool pause = false;
   private Player playerScript;
   private int levelIndex = 0;
   [SerializeField] private int lifes;
@@ -20,6 +21,14 @@ public class GameManager : MonoBehaviour
   private void Start()
   {
     NewGame();
+  }
+
+  private void Update()
+  {
+    if (Input.GetButtonDown("Pause"))
+    {
+      TogglePause();
+    }
   }
 
   public void NewGame()
@@ -50,5 +59,21 @@ public class GameManager : MonoBehaviour
   {
     Destroy(level);
     level = Instantiate(levels[index], Vector3.zero, Quaternion.identity);
+  }
+
+  public void TogglePause()
+  {
+    pause = !pause;
+
+    if (pause)
+    {
+      pauseScreen.SetActive(true);
+      Time.timeScale = 0;
+    }
+    else
+    {
+      pauseScreen.SetActive(false);
+      Time.timeScale = 1;
+    }
   }
 }
