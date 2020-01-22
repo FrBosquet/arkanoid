@@ -16,7 +16,7 @@ public class Ball : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-    GameObject.Find("Player").GetComponent<Player>().Loose();
+    GameObject.Find("GameManager").GetComponent<GameManager>().LoseBall();
     Destroy(gameObject);
   }
 
