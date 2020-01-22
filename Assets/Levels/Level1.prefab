@@ -42,6 +42,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3578501685669169279}
     m_Modifications:
+    - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
+      propertyPath: startingLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh
@@ -122,6 +126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3578501685669169279}
     m_Modifications:
+    - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
+      propertyPath: startingLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh
@@ -202,6 +210,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3578501685669169279}
     m_Modifications:
+    - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
+      propertyPath: startingLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh
@@ -282,6 +294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3578501685669169279}
     m_Modifications:
+    - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
+      propertyPath: startingLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh
@@ -362,6 +378,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3578501685669169279}
     m_Modifications:
+    - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
+      propertyPath: startingLife
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh
