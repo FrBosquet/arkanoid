@@ -5,12 +5,11 @@ using UnityEngine;
 public class DestroyParticle : MonoBehaviour
 {
   private new ParticleSystem particleSystem;
-  public float lifetime;
+  public float lifetime = 1;
 
   private void Awake()
   {
     particleSystem = gameObject.GetComponent<ParticleSystem>();
-    lifetime = (particleSystem.main.startLifetimeMultiplier);
   }
 
   private void Start()
