@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
   private Player playerScript;
   private LevelManager levelManager;
   private ScoreManager scoreManager;
+  private TimeManager timeManager;
   [SerializeField] private int bricksLeft = 0;
 
   List<GameObject> lifeTokens = new List<GameObject>();
@@ -24,8 +25,9 @@ public class GameManager : MonoBehaviour
   private void Awake()
   {
     playerScript = GameObject.Find("Player").GetComponent<Player>();
-    levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+    levelManager = GetComponent<LevelManager>();
     scoreManager = GetComponent<ScoreManager>();
+    timeManager = GetComponent<TimeManager>();
   }
 
   private void Start()
@@ -91,12 +93,12 @@ public class GameManager : MonoBehaviour
     if (pause)
     {
       pauseScreen.SetActive(true);
-      StartCoroutine(SlowDown());
+      timeManager.SlowDown();
     }
     else
     {
       pauseScreen.SetActive(false);
-      StartCoroutine(Accelerate());
+      timeManager.Accelerate();
     }
   }
 
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
 
   public void ShowVictory()
   {
-    StartCoroutine(SlowDown());
+    timeManager.SlowDown();
     victory = true;
     victoryScreen.SetActive(true);
   }
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
     victory = false;
     victoryScreen.SetActive(false);
     playerScript.Restart();
-    StartCoroutine(Accelerate());
+    timeManager.Accelerate();
   }
 
   public void AddPoints(int points)
@@ -136,26 +138,4 @@ public class GameManager : MonoBehaviour
     scoreManager.AddPoints(points);
   }
 
-  IEnumerator SlowDown()
-  {
-    while (Time.timeScale > 0.2f)
-    {
-      yield return new WaitForSeconds(0.01f);
-      Time.timeScale -= 0.05f;
-    }
-
-    Time.timeScale = 0;
-  }
-
-  IEnumerator Accelerate()
-  {
-    Time.timeScale = 0.2f;
-    while (Time.timeScale < 0.98)
-    {
-      yield return new WaitForSeconds(0.01f);
-      Time.timeScale += 0.05f;
-    }
-
-    Time.timeScale = 1;
-  }
 }
