@@ -87,9 +87,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1970231216495359650}
-  - component: {fileID: -4358434731172027399}
   - component: {fileID: 1015517661}
   - component: {fileID: 1015517660}
+  - component: {fileID: 1231510757508927277}
   m_Layer: 13
   m_Name: LifePowerUp
   m_TagString: Untagged
@@ -113,22 +113,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4358434731172027399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6017505487105533476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 710dab279581e534d8617252e793b83e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleEffect: {fileID: 6948611963770064507, guid: 988bba62d7b39a64cb980e7ba92e4a4c,
-    type: 3}
-  fallSpeed: 1
-  rotateSpeed: 120
 --- !u!54 &1015517661
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,6 +142,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1231510757508927277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017505487105533476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a952da57fe2bbd4dbc446867d025ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffect: {fileID: 6948611963770064507, guid: 988bba62d7b39a64cb980e7ba92e4a4c,
+    type: 3}
 --- !u!1 &6212486759597930201
 GameObject:
   m_ObjectHideFlags: 0

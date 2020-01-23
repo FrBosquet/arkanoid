@@ -8,6 +8,7 @@ public class Brick : MonoBehaviour
   [SerializeField] private int life = 1;
   public GameManager gameManager;
   public GameObject particlePrefab;
+  public GameObject PowerUp;
   public Material[] materials;
   private MeshRenderer meshRenderer;
   private AudioSource audioSource;
@@ -31,10 +32,15 @@ public class Brick : MonoBehaviour
 
     if (life == 0)
     {
-      GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+      Vector3 position = transform.position;
+
+      GameObject particles = Instantiate(particlePrefab, position, Quaternion.identity);
       ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
 
-      particleSystem.Play();
+      if (PowerUp != null)
+      {
+        Instantiate(PowerUp, position, Quaternion.identity);
+      }
 
       gameManager.DestroyBrick();
       gameManager.AddPoints(100);

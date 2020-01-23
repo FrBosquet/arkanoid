@@ -47,22 +47,13 @@ public class GameManager : MonoBehaviour
   {
     gameOverScreen.SetActive(false);
     victoryScreen.SetActive(false);
-    lifes = 2;
+    lifes = 0;
     bricksLeft = levelManager.ResetProgresion();
     playerScript.Restart();
     Time.timeScale = 1;
     scoreManager.Reset();
 
-    for (int i = 0; i < lifes; i++)
-    {
-      Transform playerTransform = playerScript.transform;
-      Vector3 farPosition = playerTransform.position + Vector3.right * 0.55f;
-      Vector3 offset = i * 0.15f * Vector3.left;
-
-      GameObject token = Instantiate(lifeTokenPrefab, farPosition + offset, lifeTokenPrefab.transform.rotation);
-      token.transform.SetParent(playerTransform);
-      lifeTokens.Add(token);
-    }
+    for (int i = 0; i < 2; i++) AddLife();
   }
 
   public void LoseBall()
@@ -136,6 +127,18 @@ public class GameManager : MonoBehaviour
   public void AddPoints(int points)
   {
     scoreManager.AddPoints(points);
+  }
+
+  public void AddLife()
+  {
+    Transform playerTransform = playerScript.transform;
+    Vector3 farPosition = playerTransform.position + Vector3.right * 0.55f;
+    Vector3 offset = lifes * 0.15f * Vector3.left;
+    lifes++;
+
+    GameObject token = Instantiate(lifeTokenPrefab, farPosition + offset, lifeTokenPrefab.transform.rotation);
+    token.transform.SetParent(playerTransform);
+    lifeTokens.Add(token);
   }
 
 }

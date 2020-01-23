@@ -6,8 +6,8 @@ public class PowerUp : MonoBehaviour
 {
   protected GameManager gameManager;
   public GameObject particleEffect;
-  public float fallSpeed;
-  public float rotateSpeed;
+  private float fallSpeed = 1;
+  private float rotateSpeed = 120;
 
   private void Awake()
   {
@@ -25,9 +25,14 @@ public class PowerUp : MonoBehaviour
     Destroy(gameObject);
   }
 
+  protected virtual void Effect()
+  {
+    return;
+  }
+
   private void OnCollisionEnter(Collision other)
   {
-    Debug.Log("Get powerup");
+    Effect();
     GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
     Destroy(gameObject);
   }
