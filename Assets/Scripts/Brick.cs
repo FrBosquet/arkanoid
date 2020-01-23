@@ -34,6 +34,8 @@ public class Brick : MonoBehaviour
 
       particleSystem.Play();
 
+      GameObject.Find("GameManager").GetComponent<GameManager>().DestroyBrick();
+
       Destroy(gameObject);
     }
     else

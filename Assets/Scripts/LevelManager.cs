@@ -8,26 +8,29 @@ public class LevelManager : MonoBehaviour
   private GameObject level;
   private int currentLevelIndex = 0;
 
-  private void LoadLevel(int index)
+  private int LoadLevel(int index)
   {
     Destroy(level);
     level = Instantiate(levels[index], Vector3.zero, Quaternion.identity);
     level.transform.SetParent(transform);
+
+    return level.transform.childCount;
   }
 
-  private void LoadLevel()
+  private int LoadLevel()
   {
-    LoadLevel(currentLevelIndex);
+    return LoadLevel(currentLevelIndex);
   }
 
-  public void ResetProgresion()
+  public int ResetProgresion()
   {
     currentLevelIndex = 0;
-    LoadLevel();
+    return LoadLevel();
   }
 
-  public void AdvanceToNextLevel()
+  public int AdvanceToNextLevel()
   {
     currentLevelIndex++;
+    return LoadLevel();
   }
 }
