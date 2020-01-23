@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     dead = false;
     transform.position = new Vector3(0, -5, 0);
     ball = Instantiate(ballPrefab, transform.position + Vector3.up * BALL_HEIGHT, Quaternion.identity);
+    ball.GetComponent<Ball>().flying = false;
   }
 
   public void SetDead(bool isDead)

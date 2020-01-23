@@ -60,8 +60,7 @@ public class GameManager : MonoBehaviour
   {
     Ball[] balls = FindObjectsOfType<Ball>();
 
-    if (balls.Length > 0) return;
-
+    if (balls.Length > 1) return;
 
     lifes--;
 
@@ -69,7 +68,6 @@ public class GameManager : MonoBehaviour
     {
       gameOverScreen.SetActive(true);
       playerScript.SetDead(true);
-
     }
     else
     {

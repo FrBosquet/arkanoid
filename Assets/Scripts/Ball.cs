@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour
   public float paddleEffectAmmount;
   private new Rigidbody rigidbody;
   private AudioSource kickSound;
-  private bool flying = false;
+  public bool flying = true;
   private float SPREAD = 0.2f;
 
   void Start()
