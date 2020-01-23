@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour
 {
   public int startingLife;
   [SerializeField] private int life = 1;
+  public GameManager gameManager;
   public GameObject particlePrefab;
   public Material[] materials;
   private MeshRenderer meshRenderer;
@@ -13,6 +14,7 @@ public class Brick : MonoBehaviour
 
   private void Awake()
   {
+    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     meshRenderer = gameObject.GetComponent<MeshRenderer>();
     audioSource = gameObject.GetComponent<AudioSource>();
   }
@@ -34,12 +36,13 @@ public class Brick : MonoBehaviour
 
       particleSystem.Play();
 
-      GameObject.Find("GameManager").GetComponent<GameManager>().DestroyBrick();
-
+      gameManager.DestroyBrick();
+      gameManager.AddPoints(100);
       Destroy(gameObject);
     }
     else
     {
+      gameManager.AddPoints(50);
       audioSource.Play();
       UpdateMaterial();
     }
