@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour
 
   public void LoseBall()
   {
+    Ball[] balls = FindObjectsOfType<Ball>();
+
+    if (balls.Length > 0) return;
+
+
     lifes--;
 
     if (lifes < 0)

@@ -7,6 +7,8 @@ public class Ball : MonoBehaviour
   public float paddleEffectAmmount;
   private new Rigidbody rigidbody;
   private AudioSource kickSound;
+  private bool flying = false;
+  private float SPREAD = 0.2f;
 
   void Start()
   {
@@ -41,6 +43,24 @@ public class Ball : MonoBehaviour
 
   public void Shoot()
   {
+    flying = true;
     rigidbody.AddForce(Input.GetAxis("Horizontal") * 4, 4, 0, ForceMode.VelocityChange);
+  }
+
+  public void Split()
+  {
+    if (!flying) return;
+
+    Vector3 velocity = rigidbody.velocity;
+    Vector3 perpendicular = Vector3.Cross(Vector3.forward, velocity);
+
+    GameObject copy1 = Instantiate(gameObject, transform.position + perpendicular * Time.deltaTime, transform.rotation);
+    GameObject copy2 = Instantiate(gameObject, transform.position - perpendicular * Time.deltaTime, transform.rotation);
+
+    copy1.GetComponent<Rigidbody>().velocity = Vector3.LerpUnclamped(velocity, perpendicular, SPREAD);
+    copy2.GetComponent<Rigidbody>().velocity = Vector3.LerpUnclamped(velocity, perpendicular * -1, SPREAD); ;
+
+    Destroy(gameObject);
+
   }
 }
