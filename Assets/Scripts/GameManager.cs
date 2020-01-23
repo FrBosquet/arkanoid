@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,12 +9,11 @@ public class GameManager : MonoBehaviour
   public GameObject pauseScreen;
   public GameObject victoryScreen;
   public GameObject lifeTokenPrefab;
-  public TextMeshPro scoreBoard;
 
   [SerializeField] private int lifes;
   private Player playerScript;
   private LevelManager levelManager;
-  private int score;
+  private ScoreManager scoreManager;
   [SerializeField] private int bricksLeft = 0;
 
   List<GameObject> lifeTokens = new List<GameObject>();
@@ -27,6 +25,7 @@ public class GameManager : MonoBehaviour
   {
     playerScript = GameObject.Find("Player").GetComponent<Player>();
     levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+    scoreManager = GetComponent<ScoreManager>();
   }
 
   private void Start()
@@ -50,9 +49,7 @@ public class GameManager : MonoBehaviour
     bricksLeft = levelManager.ResetProgresion();
     playerScript.Restart();
     Time.timeScale = 1;
-    score = 0;
-
-    UpdateScore();
+    scoreManager.Reset();
 
     for (int i = 0; i < lifes; i++)
     {
@@ -136,13 +133,7 @@ public class GameManager : MonoBehaviour
 
   public void AddPoints(int points)
   {
-    score += points;
-    UpdateScore();
-  }
-
-  private void UpdateScore()
-  {
-    scoreBoard.text = score.ToString();
+    scoreManager.AddPoints(points);
   }
 
   IEnumerator SlowDown()
