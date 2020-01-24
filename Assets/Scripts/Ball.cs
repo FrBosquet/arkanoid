@@ -20,8 +20,16 @@ public class Ball : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-    GameObject.Find("GameManager").GetComponent<GameManager>().LoseBall();
-    Destroy(gameObject);
+    if (other.gameObject.CompareTag("Limit"))
+    {
+      GameObject.Find("GameManager").GetComponent<GameManager>().LoseBall();
+      Destroy(gameObject);
+    }
+    else if (other.gameObject.CompareTag("Brick"))
+    {
+      Brick brick = other.gameObject.GetComponent<Brick>();
+      brick.Hit();
+    }
   }
 
   private void OnCollisionEnter(Collision other)

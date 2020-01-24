@@ -9,6 +9,7 @@ TagManager:
   - Horizontal
   - LeftVertical
   - RightVertical
+  - Limit
   layers:
   - Default
   - TransparentFX

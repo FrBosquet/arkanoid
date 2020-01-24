@@ -24,7 +24,10 @@ public class PowerUp : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-    Destroy(gameObject);
+    if (other.gameObject.CompareTag("Limit"))
+    {
+      Destroy(gameObject);
+    }
   }
 
   protected virtual void Effect()

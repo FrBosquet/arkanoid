@@ -12,6 +12,7 @@ public class Brick : MonoBehaviour
   public Material[] materials;
   private MeshRenderer meshRenderer;
   private AudioSource audioSource;
+  public bool phantom = false;
 
   private void Awake()
   {
@@ -24,6 +25,15 @@ public class Brick : MonoBehaviour
   {
     life = startingLife;
     UpdateMaterial();
+
+    if (phantom)
+    {
+      Collider collider = gameObject.GetComponent<Collider>();
+      collider.isTrigger = true;
+
+      Color color = meshRenderer.material.color;
+      meshRenderer.material.color = new Color(color.r, color.g, color.b, 0f);
+    }
   }
 
   public void Hit()

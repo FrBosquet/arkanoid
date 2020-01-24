@@ -524,8 +524,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingLife: 3
   life: 1
+  gameManager: {fileID: 0}
   particlePrefab: {fileID: 1986014127600623456, guid: 012f8092aecee55428a485f2e6d1ca9a,
     type: 3}
+  PowerUp: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: aea9654098119b747b9feeb8ed31c0c2, type: 2}
   - {fileID: 2100000, guid: 8ac933ca39d810c44b35ed0e8a66156d, type: 2}
