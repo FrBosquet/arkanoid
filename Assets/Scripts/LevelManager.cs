@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     level = Instantiate(levels[index], Vector3.zero, Quaternion.identity);
     level.transform.SetParent(transform);
 
-    return level.transform.childCount;
+    return gameObject.GetComponentsInChildren<Brick>().Length;
   }
 
   private int LoadLevel()

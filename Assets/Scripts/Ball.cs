@@ -18,7 +18,7 @@ public class Ball : MonoBehaviour
   private void Awake()
   {
     Ball[] balls = FindObjectsOfType<Ball>();
-    if (balls.Length > 1)
+    if (balls.Length > 2)
     {
       light.gameObject.SetActive(false);
     }
@@ -73,17 +73,17 @@ public class Ball : MonoBehaviour
     yield return new WaitForSeconds(0.1f);
     Vector3 currentVelocity = rigidbody.velocity;
 
-    if (lastCollided == "RightVertical" && Mathf.Round(currentVelocity.x * 10) == 0f)
+    if (lastCollided == "RightVertical" && Mathf.Round(currentVelocity.x) == 0f)
     {
-      rigidbody.velocity = Vector3.Reflect(lastVelocity, Vector3.right);
+      rigidbody.AddForce(Vector3.left * 100);
     }
-    else if (lastCollided == "LeftVertical" && Mathf.Round(currentVelocity.x * 10) == 0f)
+    else if (lastCollided == "LeftVertical" && Mathf.Round(currentVelocity.x) == 0f)
     {
-      rigidbody.velocity = Vector3.Reflect(lastVelocity, Vector3.left);
+      rigidbody.AddForce(Vector3.right * 100);
     }
-    else if (lastCollided == "Horizontal" && Mathf.Round(currentVelocity.y * 10) == 0f)
+    else if (lastCollided == "Horizontal" && Mathf.Round(currentVelocity.y) == 0f)
     {
-      rigidbody.velocity = Vector3.Reflect(lastVelocity, Vector3.down);
+      rigidbody.AddForce(Vector3.down * 100);
     }
   }
 
