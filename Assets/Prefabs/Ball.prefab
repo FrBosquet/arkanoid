@@ -215,6 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a8074a4e7fbb74cb0a439d9fb64ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 389524845}
+  flying: 1
   paddleEffectAmmount: 100
 --- !u!82 &357420404
 AudioSource:

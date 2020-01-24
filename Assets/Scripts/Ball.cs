@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+  public new GameObject light;
+  public bool flying = true;
   public float paddleEffectAmmount;
+
   private new Rigidbody rigidbody;
   private AudioSource kickSound;
-  public bool flying = true;
-  public string lastCollided;
-  public Vector3 lastVelocity;
+  private Vector3 lastVelocity;
+  private string lastCollided;
+
   private float SPREAD = 0.2f;
+
+  private void Awake()
+  {
+    Ball[] balls = FindObjectsOfType<Ball>();
+    if (balls.Length > 1)
+    {
+      light.gameObject.SetActive(false);
+    }
+  }
 
   void Start()
   {
