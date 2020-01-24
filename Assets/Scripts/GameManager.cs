@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
   public void NewGame()
   {
+    Clean();
     gameOverScreen.SetActive(false);
     victoryScreen.SetActive(false);
     lifes = 0;
@@ -115,10 +116,7 @@ public class GameManager : MonoBehaviour
 
   public void NextLevel()
   {
-    foreach (Ball ball in FindObjectsOfType<Ball>())
-    {
-      Destroy(ball.gameObject);
-    }
+    Clean();
 
     bricksLeft = levelManager.AdvanceToNextLevel();
     victory = false;
@@ -142,6 +140,19 @@ public class GameManager : MonoBehaviour
     GameObject token = Instantiate(lifeTokenPrefab, farPosition + offset, lifeTokenPrefab.transform.rotation);
     token.transform.SetParent(playerTransform);
     lifeTokens.Add(token);
+  }
+
+  private void Clean()
+  {
+    foreach (Ball ball in FindObjectsOfType<Ball>())
+    {
+      Destroy(ball.gameObject);
+    }
+
+    foreach (PowerUp powerup in FindObjectsOfType<PowerUp>())
+    {
+      Destroy(powerup.gameObject);
+    }
   }
 
 }

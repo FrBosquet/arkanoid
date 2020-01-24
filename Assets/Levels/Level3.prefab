@@ -690,8 +690,7 @@ PrefabInstance:
     - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
       propertyPath: PowerUp
       value: 
-      objectReference: {fileID: 1939619017469798132, guid: 62b7907fa3ec7ac4c9f7f23786407ed8,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh
@@ -2366,8 +2365,7 @@ PrefabInstance:
     - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
       propertyPath: PowerUp
       value: 
-      objectReference: {fileID: 1939619017469798132, guid: 62b7907fa3ec7ac4c9f7f23786407ed8,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh
