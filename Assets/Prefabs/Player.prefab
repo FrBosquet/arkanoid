@@ -124,3 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2000
   paddle: {fileID: 0}
+  ballPrefab: {fileID: 3466136536888773354, guid: 503f5b2431204d84eb3585be63acef86,
+    type: 3}
+  ball: {fileID: 0}

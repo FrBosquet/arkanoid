@@ -2476,19 +2476,6 @@ PrefabInstance:
       propertyPath: paddle
       value: 
       objectReference: {fileID: 2019865964}
-    - target: {fileID: 1602948508, guid: 6b9823fa00f4d364f82b9fccfb92508a, type: 3}
-      propertyPath: ball
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1602948508, guid: 6b9823fa00f4d364f82b9fccfb92508a, type: 3}
-      propertyPath: gameOverScreen
-      value: 
-      objectReference: {fileID: 736743439}
-    - target: {fileID: 1602948508, guid: 6b9823fa00f4d364f82b9fccfb92508a, type: 3}
-      propertyPath: ballPrefab
-      value: 
-      objectReference: {fileID: 3466136536888773354, guid: 503f5b2431204d84eb3585be63acef86,
-        type: 3}
     - target: {fileID: 1196836024756520779, guid: 6b9823fa00f4d364f82b9fccfb92508a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2548,11 +2535,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7164693130050302949, guid: 6b9823fa00f4d364f82b9fccfb92508a,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9823fa00f4d364f82b9fccfb92508a, type: 3}

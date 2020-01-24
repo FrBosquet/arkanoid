@@ -55,4 +55,9 @@ public class Player : MonoBehaviour
   {
     dead = isDead;
   }
+
+  public void Grow()
+  {
+    transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1, 1.2f, 1));
+  }
 }

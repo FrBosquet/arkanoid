@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
   protected GameManager gameManager;
+  protected Player player;
   public GameObject particleEffect;
   private float fallSpeed = 1;
   private float rotateSpeed = 120;
@@ -12,6 +13,7 @@ public class PowerUp : MonoBehaviour
   private void Awake()
   {
     gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    player = GameObject.Find("Player").GetComponent<Player>();
   }
 
   void Update()
