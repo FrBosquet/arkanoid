@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
   private LevelManager levelManager;
   private ScoreManager scoreManager;
   private TimeManager timeManager;
+  private MusicManager musicManager;
   [SerializeField] private int bricksLeft = 0;
 
   List<GameObject> lifeTokens = new List<GameObject>();
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     levelManager = GetComponent<LevelManager>();
     scoreManager = GetComponent<ScoreManager>();
     timeManager = GetComponent<TimeManager>();
+    musicManager = GetComponent<MusicManager>();
   }
 
   private void Start()
@@ -89,11 +91,13 @@ public class GameManager : MonoBehaviour
     {
       pauseScreen.SetActive(true);
       timeManager.SlowDown();
+      musicManager.SlowDown();
     }
     else
     {
       pauseScreen.SetActive(false);
       timeManager.Accelerate();
+      musicManager.Accelerate();
     }
   }
 
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
   public void ShowVictory()
   {
     timeManager.SlowDown();
+    musicManager.SlowDown();
     victory = true;
     victoryScreen.SetActive(true);
   }
@@ -123,6 +128,7 @@ public class GameManager : MonoBehaviour
     victoryScreen.SetActive(false);
     playerScript.Restart();
     timeManager.Accelerate();
+    musicManager.Accelerate();
   }
 
   public void AddPoints(int points)
