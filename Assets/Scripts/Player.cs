@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     transform.position = new Vector3(0, -5, 0);
     ball = Instantiate(ballPrefab, transform.position + Vector3.up * BALL_HEIGHT, Quaternion.identity);
     ball.GetComponent<Ball>().flying = false;
+    ResetScale();
   }
 
   public void SetDead(bool isDead)
@@ -59,5 +60,12 @@ public class Player : MonoBehaviour
   public void Grow()
   {
     transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1, 1.2f, 1));
+    paddle.transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.2f, 1, 1));
+  }
+
+  public void ResetScale()
+  {
+    transform.localScale = new Vector3(0.2f, 0.6f, 0.2f);
+    paddle.transform.localScale = new Vector3(1.2f, 0.2f, 0.2f);
   }
 }

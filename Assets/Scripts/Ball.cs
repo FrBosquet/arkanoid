@@ -7,7 +7,10 @@ public class Ball : MonoBehaviour
   public new GameObject light;
   public bool flying = true;
   public float paddleEffectAmmount;
+  public float wallRepulsion = 10.0f;
+  public float slowRepulsion = 10.0f;
 
+  private float minimumSpeed = 2;
   private new Rigidbody rigidbody;
   private AudioSource kickSound;
   private Vector3 lastVelocity;
@@ -44,6 +47,29 @@ public class Ball : MonoBehaviour
     }
   }
 
+  private void FixedUpdate()
+  {
+    if (rigidbody.velocity.magnitude < minimumSpeed && flying)
+    {
+      rigidbody.AddForce(rigidbody.velocity.normalized * slowRepulsion);
+    }
+
+    if (transform.position.x > 2.8)
+    {
+      rigidbody.AddForce(Vector3.left * wallRepulsion);
+    }
+
+    if (transform.position.x < -2.8)
+    {
+      rigidbody.AddForce(Vector3.right * wallRepulsion);
+    }
+
+    if (transform.position.y > 5)
+    {
+      rigidbody.AddForce(Vector3.down * wallRepulsion);
+    }
+  }
+
   private void OnCollisionEnter(Collision other)
   {
     lastCollided = other.gameObject.tag;
@@ -63,27 +89,6 @@ public class Ball : MonoBehaviour
     else
     {
       kickSound.Play();
-    }
-
-    StartCoroutine(recoverInertia());
-  }
-
-  private IEnumerator recoverInertia()
-  {
-    yield return new WaitForSeconds(0.1f);
-    Vector3 currentVelocity = rigidbody.velocity;
-
-    if (lastCollided == "RightVertical" && Mathf.Round(currentVelocity.x) == 0f)
-    {
-      rigidbody.AddForce(Vector3.left * 100);
-    }
-    else if (lastCollided == "LeftVertical" && Mathf.Round(currentVelocity.x) == 0f)
-    {
-      rigidbody.AddForce(Vector3.right * 100);
-    }
-    else if (lastCollided == "Horizontal" && Mathf.Round(currentVelocity.y) == 0f)
-    {
-      rigidbody.AddForce(Vector3.down * 100);
     }
   }
 
