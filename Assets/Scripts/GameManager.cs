@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-  public List<GameObject> levels;
-  public GameObject gameOverScreen;
-  public GameObject pauseScreen;
-  public GameObject victoryScreen;
+  public List<Score> highScores;
+
   public GameObject lifeTokenPrefab;
+
+  public TextMeshPro endGameText;
 
   [SerializeField] private int lifes;
   private Player playerScript;
@@ -16,10 +17,12 @@ public class GameManager : MonoBehaviour
   private ScoreManager scoreManager;
   private TimeManager timeManager;
   private MusicManager musicManager;
+  private UIManager uiManager;
   [SerializeField] private int bricksLeft = 0;
 
   List<GameObject> lifeTokens = new List<GameObject>();
 
+  private bool playing = false;
   private bool pause = false;
   private bool victory = false;
 
@@ -30,11 +33,13 @@ public class GameManager : MonoBehaviour
     scoreManager = GetComponent<ScoreManager>();
     timeManager = GetComponent<TimeManager>();
     musicManager = GetComponent<MusicManager>();
+    uiManager = GetComponent<UIManager>();
   }
 
   private void Start()
   {
-    NewGame();
+    StartScreen();
+
   }
 
   private void Update()
@@ -45,11 +50,34 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  public void NewGame()
+  public void StartScreen()
   {
     Clean();
-    gameOverScreen.SetActive(false);
-    victoryScreen.SetActive(false);
+    highScores = DataManager.GetSaveData();
+    uiManager.Show("StartScreen");
+    uiManager.UpdateHighScores(highScores);
+    scoreManager.Reset();
+    playerScript.Restart();
+    musicManager.Restart();
+    musicManager.Accelerate();
+    playing = false;
+  }
+
+  public void RegisterPuntuation()
+  {
+    Score newScore = new Score(scoreManager.score, uiManager.playerName);
+    highScores.Add(newScore);
+    DataManager.SaveData(highScores);
+    levelManager.Clear();
+    StartScreen();
+  }
+
+  public void NewGame()
+  {
+    playing = true;
+
+    uiManager.Hide();
+
     lifes = 0;
     bricksLeft = levelManager.ResetProgresion();
     playerScript.Restart();
@@ -69,8 +97,7 @@ public class GameManager : MonoBehaviour
 
     if (lifes < 0)
     {
-      gameOverScreen.SetActive(true);
-      playerScript.SetDead(true);
+      EndGame("Game Over");
     }
     else
     {
@@ -81,54 +108,17 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  public void TogglePause()
+  public void EndGame(string message)
   {
-    if (victory) return;
+    playing = false;
 
-    pause = !pause;
+    uiManager.Show("GameOverScreen");
+    uiManager.SetEndgameText(message);
+    uiManager.UpdateScoreResume(scoreManager.score);
 
-    if (pause)
-    {
-      pauseScreen.SetActive(true);
-      timeManager.SlowDown();
-      musicManager.SlowDown();
-    }
-    else
-    {
-      pauseScreen.SetActive(false);
-      timeManager.Accelerate();
-      musicManager.Accelerate();
-    }
-  }
-
-  public void DestroyBrick()
-  {
-    bricksLeft--;
-
-    if (bricksLeft == 0)
-    {
-      ShowVictory();
-    }
-  }
-
-  public void ShowVictory()
-  {
     timeManager.SlowDown();
-    musicManager.SlowDown();
-    victory = true;
-    victoryScreen.SetActive(true);
-  }
 
-  public void NextLevel()
-  {
-    Clean();
-
-    bricksLeft = levelManager.AdvanceToNextLevel();
-    victory = false;
-    victoryScreen.SetActive(false);
-    playerScript.Restart();
-    timeManager.Accelerate();
-    musicManager.Accelerate();
+    playerScript.SetDead(true);
   }
 
   public void AddPoints(int points)
@@ -158,6 +148,73 @@ public class GameManager : MonoBehaviour
     foreach (PowerUp powerup in FindObjectsOfType<PowerUp>())
     {
       Destroy(powerup.gameObject);
+    }
+
+    foreach (ParticleSystem particle in FindObjectsOfType<ParticleSystem>())
+    {
+      Destroy(particle.gameObject);
+    }
+  }
+
+  public void DestroyBrick()
+  {
+    bricksLeft--;
+
+    if (bricksLeft == 0)
+    {
+      ShowVictory();
+    }
+  }
+
+  public void NextLevel()
+  {
+    Clean();
+
+    bricksLeft = levelManager.AdvanceToNextLevel();
+    victory = false;
+    uiManager.Hide();
+    playerScript.Restart();
+    timeManager.Accelerate();
+    musicManager.Accelerate();
+  }
+
+  public void ShowVictory()
+  {
+    timeManager.SlowDown();
+    musicManager.SlowDown();
+    victory = true;
+
+    if (levelManager.isLastLevel)
+    {
+      uiManager.Show("GameOverScreen");
+      uiManager.SetEndgameText("Victory");
+    }
+    else
+    {
+      uiManager.Show("VictoryScreen");
+
+    }
+  }
+
+  public void TogglePause()
+  {
+    if (victory) return;
+    if (!playing) return;
+
+    pause = !pause;
+
+    if (pause)
+    {
+      uiManager.Show("PauseScreen");
+
+      timeManager.SlowDown();
+      musicManager.SlowDown();
+    }
+    else
+    {
+      uiManager.Hide();
+      timeManager.Accelerate();
+      musicManager.Accelerate();
     }
   }
 

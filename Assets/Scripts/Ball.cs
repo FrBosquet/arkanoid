@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
   public float wallRepulsion = 10.0f;
   public float slowRepulsion = 10.0f;
 
-  private float minimumSpeed = 2;
+  private float minimumSpeed = 3;
   private new Rigidbody rigidbody;
   private AudioSource kickSound;
   private Vector3 lastVelocity;

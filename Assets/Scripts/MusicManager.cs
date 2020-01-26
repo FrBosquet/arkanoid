@@ -75,4 +75,9 @@ public class MusicManager : MonoBehaviour
       }
     }
   }
+
+  public void Restart()
+  {
+    audioSource.time = 0;
+  }
 }

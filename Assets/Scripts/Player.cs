@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
   public GameObject paddle;
   public GameObject ballPrefab;
   public GameObject ball;
-  private bool dead;
+  private bool dead = true;
   private float BALL_HEIGHT = 0.3f;
 
   void Start()

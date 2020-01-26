@@ -5,12 +5,19 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
   public List<GameObject> levels;
+  public bool isLastLevel = false;
+
   private GameObject level;
   private int currentLevelIndex = 0;
 
+  private void Start()
+  {
+    UpdateIsLastLevel();
+  }
+
   private int LoadLevel(int index)
   {
-    Destroy(level);
+    Clear();
     level = Instantiate(levels[index], Vector3.zero, Quaternion.identity);
     level.transform.SetParent(transform);
 
@@ -31,6 +38,18 @@ public class LevelManager : MonoBehaviour
   public int AdvanceToNextLevel()
   {
     currentLevelIndex++;
+    UpdateIsLastLevel();
+
     return LoadLevel();
+  }
+
+  private void UpdateIsLastLevel()
+  {
+    isLastLevel = levels.Count == currentLevelIndex + 1;
+  }
+
+  public void Clear()
+  {
+    Destroy(level);
   }
 }

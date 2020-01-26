@@ -6,7 +6,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
   private TextMeshPro scoreBoard;
-  private int score;
+  public int score;
 
   private void Awake()
   {

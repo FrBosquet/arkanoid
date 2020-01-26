@@ -38,6 +38,7 @@ public class PowerUp : MonoBehaviour
   private void OnCollisionEnter(Collision other)
   {
     Effect();
+    gameManager.AddPoints(500);
     GameObject particle = Instantiate(particleEffect, transform.position, Quaternion.identity);
     Destroy(gameObject);
   }
