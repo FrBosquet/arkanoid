@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
   private void Start()
   {
     StartScreen();
-
   }
 
   private void Update()
@@ -58,6 +57,7 @@ public class GameManager : MonoBehaviour
     uiManager.UpdateHighScores(highScores);
     scoreManager.Reset();
     playerScript.Restart();
+    playerScript.SetDead(true);
     musicManager.Restart();
     musicManager.Accelerate();
     playing = false;
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
 
   public void NewGame()
   {
+    Clean();
     playing = true;
 
     uiManager.Hide();
