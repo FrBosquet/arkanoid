@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45a10f6bad985546800d8e5f98bea12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballStart: {fileID: 0}
   moveSpeed: 2000
   paddle: {fileID: 0}
   ballPrefab: {fileID: 3466136536888773354, guid: 503f5b2431204d84eb3585be63acef86,

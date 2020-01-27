@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-  private new Rigidbody rigidbody;
+  public AudioSource ballStart;
   public float moveSpeed = 50;
   public GameObject paddle;
   public GameObject ballPrefab;
   public GameObject ball;
+
+  private new Rigidbody rigidbody;
   private bool dead = true;
   private float BALL_HEIGHT = 0.3f;
   private Vector3 DEFAULT_SCALE;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
       if (shoot)
       {
         ball.GetComponent<Ball>().Shoot();
+        ballStart.Play();
         ball = null;
       }
     }

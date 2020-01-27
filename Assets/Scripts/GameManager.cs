@@ -5,20 +5,21 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-  public List<Score> highScores;
+  public AudioSource ballLose;
 
   public GameObject lifeTokenPrefab;
 
   public TextMeshPro endGameText;
 
-  [SerializeField] private int lifes;
+  private int lifes;
+  private int bricksLeft = 0;
+  private List<Score> highScores;
   private Player playerScript;
   private LevelManager levelManager;
   private ScoreManager scoreManager;
   private TimeManager timeManager;
   private MusicManager musicManager;
   private UIManager uiManager;
-  [SerializeField] private int bricksLeft = 0;
 
   List<GameObject> lifeTokens = new List<GameObject>();
 
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
   public void LoseBall()
   {
     Ball[] balls = FindObjectsOfType<Ball>();
+    ballLose.Play();
 
     if (balls.Length > 1) return;
 
