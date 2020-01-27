@@ -54,7 +54,7 @@ MonoBehaviour:
     supportTransparentDepthPostpass: 1
     colorBufferFormat: 74
     supportedLitShaderMode: 2
-    supportDecals: 1
+    supportDecals: 0
     msaaSampleCount: 1
     supportMotionVectors: 1
     supportRuntimeDebugDisplay: 1
@@ -117,7 +117,7 @@ MonoBehaviour:
       checkerboardDepthBuffer: 1
       upsampleType: 1
   allowShaderVariantStripping: 1
-  enableSRPBatcher: 1
+  enableSRPBatcher: 0
   shaderVariantLogLevel: 0
   diffusionProfileSettings: {fileID: 0}
   diffusionProfileSettingsList: []

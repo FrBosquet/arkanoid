@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7721997591633110978
 Transform:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 60cd58ba16353bc47878d13073dcfb21, type: 2}
+  - {fileID: 2100000, guid: 14b92591898a5194dbd17149e9ebc97c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   ballStart: {fileID: 0}
   moveSpeed: 2000
   paddle: {fileID: 0}
+  look: {fileID: 0}
   ballPrefab: {fileID: 3466136536888773354, guid: 503f5b2431204d84eb3585be63acef86,
     type: 3}
   ball: {fileID: 0}
