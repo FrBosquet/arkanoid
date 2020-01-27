@@ -10,6 +10,10 @@ public class Ball : MonoBehaviour
   public float wallRepulsion = 10.0f;
   public float slowRepulsion = 10.0f;
 
+  public float speed;
+  public float verticalSpeed;
+  public float horizontalSpeed;
+
   private float minimumSpeed = 3;
   private new Rigidbody rigidbody;
   private AudioSource kickSound;
@@ -49,24 +53,35 @@ public class Ball : MonoBehaviour
 
   private void FixedUpdate()
   {
-    if (rigidbody.velocity.magnitude < minimumSpeed && flying)
-    {
-      rigidbody.AddForce(rigidbody.velocity.normalized * slowRepulsion);
-    }
+    if (!flying) return;
 
-    if (transform.position.x > 2.8)
+    Vector3 velocity = rigidbody.velocity;
+    Vector3 verticalVelocity = Vector3.Project(velocity, Vector3.up);
+    Vector3 horizontalVelocity = Vector3.Project(velocity, Vector3.right);
+
+    speed = velocity.magnitude;
+    verticalSpeed = verticalVelocity.magnitude;
+    horizontalSpeed = horizontalVelocity.magnitude;
+
+    if (speed < minimumSpeed && flying)
+    {
+      rigidbody.AddForce(velocity.normalized * slowRepulsion);
+    }
+    else if (transform.position.x > 2.9 && horizontalSpeed < 0.2f)
     {
       rigidbody.AddForce(Vector3.left * wallRepulsion);
     }
-
-    if (transform.position.x < -2.8)
+    else if (transform.position.x < -2.8)
     {
       rigidbody.AddForce(Vector3.right * wallRepulsion);
     }
-
-    if (transform.position.y > 5)
+    else if (transform.position.y > 0 && verticalSpeed < 0.05f)
     {
-      rigidbody.AddForce(Vector3.down * wallRepulsion);
+      rigidbody.AddForce(Vector3.down * slowRepulsion);
+    }
+    else if (transform.position.y < 0 && verticalSpeed < 0.05f)
+    {
+      rigidbody.AddForce(Vector3.up * slowRepulsion);
     }
   }
 
