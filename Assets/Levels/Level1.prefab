@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: phantom
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1016646681, guid: 9b8f3c9cf89a3104eb951435de4f32fb, type: 3}
+      propertyPath: PowerUp
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3343098205425628914, guid: 9b8f3c9cf89a3104eb951435de4f32fb,
         type: 3}
       propertyPath: m_Mesh

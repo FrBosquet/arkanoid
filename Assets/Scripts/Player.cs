@@ -11,10 +11,13 @@ public class Player : MonoBehaviour
   public GameObject ball;
   private bool dead = true;
   private float BALL_HEIGHT = 0.3f;
+  private Vector3 DEFAULT_SCALE;
+  private Vector3 POWERUP_SCALE = new Vector3(1, 1.2f, 1);
 
   void Start()
   {
     rigidbody = gameObject.GetComponent<Rigidbody>();
+    DEFAULT_SCALE = transform.localScale;
   }
 
   void Update()
@@ -59,13 +62,13 @@ public class Player : MonoBehaviour
 
   public void Grow()
   {
-    transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1, 1.2f, 1));
-    paddle.transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.2f, 1, 1));
+    transform.localScale = Vector3.Scale(transform.localScale, POWERUP_SCALE);
+    paddle.transform.localScale = Vector3.Scale(transform.localScale, POWERUP_SCALE);
   }
 
   public void ResetScale()
   {
-    transform.localScale = new Vector3(0.2f, 0.6f, 0.2f);
-    paddle.transform.localScale = new Vector3(1.2f, 0.2f, 0.2f);
+    transform.localScale = DEFAULT_SCALE;
+    paddle.transform.localScale = DEFAULT_SCALE;
   }
 }
